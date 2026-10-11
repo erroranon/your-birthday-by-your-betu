@@ -3,122 +3,211 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A Birthday Surprise Just for You 🎂</title>
+  <title>Happy Birthday! 🎂</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div id="experience-wrapper">
+  <div id="game-container">
     <canvas id="confetti-canvas"></canvas>
 
-    <!-- STEP 1: KNOCK AT THE DOOR -->
+    <!-- SCENE 1: KNOCK AT THE DOOR (POV Looking at front door) -->
     <div class="scene active" id="scene-1">
-      <div class="visual-area">
+      <div class="scene-visual">
         <div class="door-frame" onclick="nextScene(2)">
-          <div class="knocker"></div>
+          <div class="door-panel">
+            <div class="peephole"></div>
+            <div class="door-handle"></div>
+            <div class="knock-pulse">
+              <span class="knock-ripple"></span>
+              <span class="knock-text">KNOCK KNOCK!</span>
+            </div>
+          </div>
         </div>
       </div>
-      <h2 class="story-title">A Knock at the Door...</h2>
-      <p class="story-desc">Someone is knocking outside your door on your special day.</p>
-      <div class="controls">
-        <button onclick="nextScene(2)">Open the Door 🚪</button>
+      <div class="story-content">
+        <h2>A Knock at Your Door</h2>
+        <p>A soft knock breaks the quiet of your room on your special day.</p>
+        <div class="controls">
+          <button class="btn-primary" onclick="nextScene(2)">Open the Door 🚪</button>
+        </div>
       </div>
     </div>
 
-    <!-- STEP 2: HE ARRIVES -->
+    <!-- SCENE 2: HE ARRIVES AT THE DOORWAY (POV Looking at him outside) -->
     <div class="scene" id="scene-2">
-      <div class="visual-area">
-        <div class="emoji-hero">🙋‍♂️ 🎁</div>
+      <div class="scene-visual hallway-bg">
+        <svg class="char-svg" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+          <!-- Boy standing at door holding wrapped gift -->
+          <circle cx="150" cy="80" r="42" fill="#ffd1b3" /> <!-- Face -->
+          <path d="M110,80 Q150,30 190,80 Q170,45 150,45 Q125,48 110,80 Z" fill="#2c2a29" /> <!-- Hair -->
+          <circle cx="138" cy="80" r="4" fill="#333" />
+          <circle cx="162" cy="80" r="4" fill="#333" />
+          <path d="M142,95 Q150,105 158,95" stroke="#c05c54" stroke-width="3" fill="none" stroke-linecap="round" /> <!-- Smile -->
+          <path d="M90,140 Q150,120 210,140 L215,280 L85,280 Z" fill="#1f3a52" /> <!-- Sweater -->
+          <!-- Gift Box in arms -->
+          <rect x="105" y="160" width="90" height="80" rx="6" fill="#f4a261" stroke="#e76f51" stroke-width="2" />
+          <rect x="143" y="160" width="14" height="80" fill="#e63946" />
+          <rect x="105" y="195" width="90" height="14" fill="#e63946" />
+          <!-- Ribbon Bow -->
+          <ellipse cx="140" cy="155" rx="14" ry="9" fill="#e63946" />
+          <ellipse cx="160" cy="155" rx="14" ry="9" fill="#e63946" />
+          <circle cx="150" cy="157" r="6" fill="#ba181b" />
+          <!-- POV hands holding the door -->
+          <ellipse cx="30" cy="220" rx="18" ry="10" fill="#ffd1b3" transform="rotate(30 30 220)" />
+        </svg>
       </div>
-      <h2 class="story-title">Surprise!</h2>
-      <p class="story-desc">He's standing there with a mystery gift box and a bright smile.</p>
-      <div class="controls">
-        <button class="btn-ghost" onclick="nextScene(1)">Back</button>
-        <button onclick="nextScene(3)">Invite Him Inside 🛋️</button>
+      <div class="story-content">
+        <h2>"Surprise! Happy Birthday!"</h2>
+        <p>He's standing in your doorway, holding a tied gift box with a bright grin.</p>
+        <div class="controls">
+          <button class="btn-ghost" onclick="nextScene(1)">Back</button>
+          <button class="btn-primary" onclick="nextScene(3)">Invite Him In 🛋️</button>
+        </div>
       </div>
     </div>
 
-    <!-- STEP 3: HE COMES INSIDE & PLACES THE BOX -->
+    <!-- SCENE 3: HE PLACES THE GIFT ON THE TABLE (Inside Room) -->
     <div class="scene" id="scene-3">
-      <div class="visual-area">
-        <div class="emoji-hero">📦</div>
+      <div class="scene-visual room-bg">
+        <svg class="char-svg" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+          <!-- Room table & Gift Box ready to open -->
+          <ellipse cx="150" cy="275" rx="130" ry="25" fill="#3a2312" /> <!-- Table -->
+          <!-- Gift Box -->
+          <rect x="100" y="150" width="100" height="90" rx="8" fill="#f4a261" />
+          <rect x="142" y="150" width="16" height="90" fill="#e63946" />
+          <!-- Ribbons untying -->
+          <path d="M150,150 C120,110 80,140 100,165" stroke="#e63946" stroke-width="5" fill="none" stroke-linecap="round" />
+          <path d="M150,150 C180,110 220,140 200,165" stroke="#e63946" stroke-width="5" fill="none" stroke-linecap="round" />
+        </svg>
       </div>
-      <h2 class="story-title">What could it be?</h2>
-      <p class="story-desc">He sets the ribbon-wrapped box carefully on your table and gestures for you to open it.</p>
-      <div class="controls">
-        <button class="btn-ghost" onclick="nextScene(2)">Back</button>
-        <button onclick="nextScene(4)">Unbox the Gift ✨</button>
+      <div class="story-content">
+        <h2>What's Inside?</h2>
+        <p>He places the box on the table and looks over at you: <em>"Go ahead, open it!"</em></p>
+        <div class="controls">
+          <button class="btn-ghost" onclick="nextScene(2)">Back</button>
+          <button class="btn-primary" onclick="nextScene(4)">Open the Box ✨</button>
+        </div>
       </div>
     </div>
 
-    <!-- STEP 4: A BEAUTIFUL CAKE -->
+    <!-- SCENE 4: THE CAKE WITH FLICKERING CANDLES (POV looking down) -->
     <div class="scene" id="scene-4">
-      <div class="visual-area">
-        <div class="cake-plate">
-          <div class="cake-base">
-            <div class="candle">
-              <div class="flame" id="cake-flame"></div>
-            </div>
+      <div class="scene-visual">
+        <div class="cake-box">
+          <div class="cake-stand">
+            <!-- 3D Cake SVG -->
+            <svg viewBox="0 0 280 230" class="cake-svg">
+              <ellipse cx="140" cy="190" rx="110" ry="22" fill="#2c1a0e" opacity="0.3" />
+              <!-- Bottom Layer -->
+              <path d="M50,140 Q140,165 230,140 L230,175 Q140,200 50,175 Z" fill="#d9777f" />
+              <ellipse cx="140" cy="140" rx="90" ry="20" fill="#f9bec7" />
+              <!-- Top Layer -->
+              <path d="M70,95 Q140,115 210,95 L210,125 Q140,145 70,125 Z" fill="#d9777f" />
+              <ellipse cx="140" cy="95" rx="70" ry="16" fill="#fff0f3" />
+              <!-- Candles -->
+              <rect x="100" y="55" width="8" height="30" rx="2" fill="#ffd166" />
+              <rect x="136" y="45" width="8" height="40" rx="2" fill="#06d6a0" />
+              <rect x="172" y="55" width="8" height="30" rx="2" fill="#118ab2" />
+            </svg>
+            <!-- CSS Animated Flames -->
+            <div class="candle-flame f-left" id="flame-1"></div>
+            <div class="candle-flame f-mid" id="flame-2"></div>
+            <div class="candle-flame f-right" id="flame-3"></div>
           </div>
         </div>
       </div>
-      <h2 class="story-title">It's a Birthday Cake!</h2>
-      <p class="story-desc">He lights the candle for you. The flame flickers warmly right before your eyes.</p>
-      <div class="controls">
-        <button class="btn-ghost" onclick="nextScene(3)">Back</button>
-        <button onclick="blowCandle()">Make a Wish & Blow 🌬️</button>
+      <div class="story-content">
+        <h2>"Make a wish!"</h2>
+        <p>He lights the candles. The warm glow reflects softly in front of you.</p>
+        <div class="controls">
+          <button class="btn-ghost" onclick="nextScene(3)">Back</button>
+          <button class="btn-primary" onclick="blowCandles()">Blow out the candles 🌬️</button>
+        </div>
       </div>
     </div>
 
-    <!-- STEP 5: CUT THE CAKE -->
+    <!-- SCENE 5: CANDLES OUT & CAKE CUTTING -->
     <div class="scene" id="scene-5">
-      <div class="visual-area">
-        <div class="emoji-hero">🎂 🔪</div>
+      <div class="scene-visual">
+        <svg viewBox="0 0 280 230" class="cake-svg">
+          <ellipse cx="140" cy="190" rx="110" ry="22" fill="#2c1a0e" opacity="0.3" />
+          <path d="M50,140 Q140,165 230,140 L230,175 Q140,200 50,175 Z" fill="#d9777f" />
+          <ellipse cx="140" cy="140" rx="90" ry="20" fill="#f9bec7" />
+          <path d="M70,95 Q140,115 210,95 L210,125 Q140,145 70,125 Z" fill="#d9777f" />
+          <ellipse cx="140" cy="95" rx="70" ry="16" fill="#fff0f3" />
+          <!-- Sliced piece -->
+          <path d="M140,95 L175,98 L170,125 L140,120 Z" fill="#b5525b" />
+          <!-- Smoke wisp -->
+          <path d="M140,40 Q135,25 145,15" stroke="#ccc" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6" />
+        </svg>
       </div>
-      <h2 class="story-title">Candle is out!</h2>
-      <p class="story-desc">Your wish is sealed. Now slice the first piece together.</p>
-      <div class="controls">
-        <button onclick="nextScene(6)">Cut the Cake 🍰</button>
+      <div class="story-content">
+        <h2>The Wish is Made! ✨</h2>
+        <p>The smoke floats away into the air as you slice the first piece together.</p>
+        <div class="controls">
+          <button class="btn-primary" onclick="nextScene(6)">Cut the Cake & Celebrate 🍰</button>
+        </div>
       </div>
     </div>
 
-    <!-- STEP 6: A GENTLE HUG -->
+    <!-- SCENE 6: A GENTLE HUG (POV Embrace) -->
     <div class="scene" id="scene-6">
-      <div class="visual-area">
-        <div class="emoji-hero">🫂 ❤️</div>
+      <div class="scene-visual hug-bg">
+        <svg viewBox="0 0 300 300" class="char-svg">
+          <!-- Warm glowing heart ambiance -->
+          <circle cx="150" cy="150" r="100" fill="rgba(230, 57, 70, 0.15)" />
+          <!-- Hug perspective -->
+          <ellipse cx="150" cy="85" rx="36" ry="42" fill="#ffd1b3" />
+          <path d="M120,70 Q150,40 180,70 Q170,45 150,45 Q135,46 120,70 Z" fill="#2c2a29" />
+          <path d="M80,145 Q150,120 220,145 L230,300 L70,300 Z" fill="#1f3a52" />
+          <!-- Warm arms around perspective -->
+          <path d="M80,160 Q40,200 80,240" stroke="#ffd1b3" stroke-width="22" stroke-linecap="round" fill="none" />
+          <path d="M220,160 Q260,200 220,240" stroke="#ffd1b3" stroke-width="22" stroke-linecap="round" fill="none" />
+        </svg>
       </div>
-      <h2 class="story-title">A Warm Hug</h2>
-      <p class="story-desc">He gives you a gentle, lingering hug and whispers: <em>"Happy Birthday to the most special person."</em></p>
-      <div class="controls">
-        <button onclick="nextScene(7)">Pull Back Slowly</button>
+      <div class="story-content">
+        <h2>A Gentle Hug</h2>
+        <p>He wraps his arms around you in a warm, gentle embrace. <br/><em>"Happy birthday... I'm so glad to be here with you."</em></p>
+        <div class="controls">
+          <button class="btn-primary" onclick="nextScene(7)">Pull Back Slowly 🌸</button>
+        </div>
       </div>
     </div>
 
-    <!-- STEP 7: THE RED CARD REVEAL -->
+    <!-- SCENE 7: THE 3D RED CARD REVEAL (Interactive 3D Fold) -->
     <div class="scene" id="scene-7">
-      <div class="visual-area">
-        <div class="card-wrap">
-          <div class="greeting-card" id="greeting-card" onclick="toggleCard()">
-            <div class="card-face card-front">
-              <div style="font-size: 2.2rem;">💌</div>
-              <h3 style="margin-top: 10px; font-size: 1.1rem; letter-spacing: 1px;">FOR YOU</h3>
-              <p style="font-size: 0.8rem; margin-top: 8px; opacity: 0.85;">(Tap to open)</p>
+      <div class="scene-visual">
+        <div class="card-stage">
+          <div class="book-card" id="card3d" onclick="toggleBookCard()">
+            <!-- Front Cover -->
+            <div class="card-side card-front">
+              <div class="gold-border">
+                <span class="seal-icon">💌</span>
+                <h3>HAPPY BIRTHDAY</h3>
+                <p>Tap to Open</p>
+              </div>
             </div>
-            <div class="card-face card-inside">
-              <p style="font-weight: 700; margin-bottom: 8px; font-size: 1.05rem;">Happy Birthday! ✨</p>
-              <p style="font-size: 0.85rem; line-height: 1.45;">
-                Wishing you a year filled with smiles, laughter, dreams coming true, and endless joy!
+            <!-- Inside Page -->
+            <div class="card-side card-inside">
+              <h3>To Someone Wonderful ✨</h3>
+              <p class="card-text">
+                May your day be filled with all the light, laughter, and happiness you bring to everyone around you.
               </p>
+              <div class="card-footer">With love, always ❤️</div>
             </div>
           </div>
         </div>
       </div>
-      <h2 class="story-title">He Hands You a Red Card</h2>
-      <p class="story-desc">He pulls a red card from his pocket and hands it directly to you.</p>
-      <div class="controls">
-        <button onclick="toggleCard()" id="card-btn">Open the Card ✉️</button>
+      <div class="story-content">
+        <h2>He Hands You a Red Card</h2>
+        <p>He pulls a carefully kept red envelope from his jacket and places it in your hands.</p>
+        <div class="controls">
+          <button class="btn-primary" id="card-action-btn" onclick="toggleBookCard()">Open Your Card ✉️</button>
+        </div>
       </div>
     </div>
+
   </div>
 
   <script src="script.js"></script>
