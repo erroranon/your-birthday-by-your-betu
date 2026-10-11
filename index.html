@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Birthday Surprise Just for You 🎂</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div id="experience-wrapper">
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- STEP 1: KNOCK AT THE DOOR -->
+    <div class="scene active" id="scene-1">
+      <div class="visual-area">
+        <div class="door-frame" onclick="nextScene(2)">
+          <div class="knocker"></div>
+        </div>
+      </div>
+      <h2 class="story-title">A Knock at the Door...</h2>
+      <p class="story-desc">Someone is knocking outside your door on your special day.</p>
+      <div class="controls">
+        <button onclick="nextScene(2)">Open the Door 🚪</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: HE ARRIVES -->
+    <div class="scene" id="scene-2">
+      <div class="visual-area">
+        <div class="emoji-hero">🙋‍♂️ 🎁</div>
+      </div>
+      <h2 class="story-title">Surprise!</h2>
+      <p class="story-desc">He's standing there with a mystery gift box and a bright smile.</p>
+      <div class="controls">
+        <button class="btn-ghost" onclick="nextScene(1)">Back</button>
+        <button onclick="nextScene(3)">Invite Him Inside 🛋️</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: HE COMES INSIDE & PLACES THE BOX -->
+    <div class="scene" id="scene-3">
+      <div class="visual-area">
+        <div class="emoji-hero">📦</div>
+      </div>
+      <h2 class="story-title">What could it be?</h2>
+      <p class="story-desc">He sets the ribbon-wrapped box carefully on your table and gestures for you to open it.</p>
+      <div class="controls">
+        <button class="btn-ghost" onclick="nextScene(2)">Back</button>
+        <button onclick="nextScene(4)">Unbox the Gift ✨</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: A BEAUTIFUL CAKE -->
+    <div class="scene" id="scene-4">
+      <div class="visual-area">
+        <div class="cake-plate">
+          <div class="cake-base">
+            <div class="candle">
+              <div class="flame" id="cake-flame"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="story-title">It's a Birthday Cake!</h2>
+      <p class="story-desc">He lights the candle for you. The flame flickers warmly right before your eyes.</p>
+      <div class="controls">
+        <button class="btn-ghost" onclick="nextScene(3)">Back</button>
+        <button onclick="blowCandle()">Make a Wish & Blow 🌬️</button>
+      </div>
+    </div>
+
+    <!-- STEP 5: CUT THE CAKE -->
+    <div class="scene" id="scene-5">
+      <div class="visual-area">
+        <div class="emoji-hero">🎂 🔪</div>
+      </div>
+      <h2 class="story-title">Candle is out!</h2>
+      <p class="story-desc">Your wish is sealed. Now slice the first piece together.</p>
+      <div class="controls">
+        <button onclick="nextScene(6)">Cut the Cake 🍰</button>
+      </div>
+    </div>
+
+    <!-- STEP 6: A GENTLE HUG -->
+    <div class="scene" id="scene-6">
+      <div class="visual-area">
+        <div class="emoji-hero">🫂 ❤️</div>
+      </div>
+      <h2 class="story-title">A Warm Hug</h2>
+      <p class="story-desc">He gives you a gentle, lingering hug and whispers: <em>"Happy Birthday to the most special person."</em></p>
+      <div class="controls">
+        <button onclick="nextScene(7)">Pull Back Slowly</button>
+      </div>
+    </div>
+
+    <!-- STEP 7: THE RED CARD REVEAL -->
+    <div class="scene" id="scene-7">
+      <div class="visual-area">
+        <div class="card-wrap">
+          <div class="greeting-card" id="greeting-card" onclick="toggleCard()">
+            <div class="card-face card-front">
+              <div style="font-size: 2.2rem;">💌</div>
+              <h3 style="margin-top: 10px; font-size: 1.1rem; letter-spacing: 1px;">FOR YOU</h3>
+              <p style="font-size: 0.8rem; margin-top: 8px; opacity: 0.85;">(Tap to open)</p>
+            </div>
+            <div class="card-face card-inside">
+              <p style="font-weight: 700; margin-bottom: 8px; font-size: 1.05rem;">Happy Birthday! ✨</p>
+              <p style="font-size: 0.85rem; line-height: 1.45;">
+                Wishing you a year filled with smiles, laughter, dreams coming true, and endless joy!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="story-title">He Hands You a Red Card</h2>
+      <p class="story-desc">He pulls a red card from his pocket and hands it directly to you.</p>
+      <div class="controls">
+        <button onclick="toggleCard()" id="card-btn">Open the Card ✉️</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
