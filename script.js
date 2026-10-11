@@ -1,81 +1,83 @@
-// Navigation State
+// Step Navigation State
 function nextScene(step) {
   document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
-  const activeScreen = document.getElementById(`scene-${step}`);
-  if (activeScreen) {
-    activeScreen.classList.add('active');
+  const target = document.getElementById(`scene-${step}`);
+  if (target) {
+    target.classList.add('active');
   }
 }
 
-// Step 4 -> 5: Blow Candle + Launch Confetti
-function blowCandle() {
-  const flame = document.getElementById('cake-flame');
-  if (flame) flame.classList.add('out');
-  burstConfetti();
+// Blow Candles Action
+function blowCandles() {
+  document.getElementById('flame-1').classList.add('flame-out');
+  document.getElementById('flame-2').classList.add('flame-out');
+  document.getElementById('flame-3').classList.add('flame-out');
+  fireConfettiBurst();
   setTimeout(() => {
     nextScene(5);
-  }, 700);
+  }, 750);
 }
 
-// Step 7: 3D Card Flip Handler
-let isOpened = false;
-function toggleCard() {
-  const card = document.getElementById('greeting-card');
-  const btn = document.getElementById('card-btn');
-  isOpened = !isOpened;
-  if (isOpened) {
-    card.classList.add('opened');
-    btn.innerText = 'Close the Card';
-    burstConfetti();
+// 3D Card Unfolding
+let isCardOpen = false;
+function toggleBookCard() {
+  const card = document.getElementById('card3d');
+  const btn = document.getElementById('card-action-btn');
+  isCardOpen = !isCardOpen;
+  
+  if (isCardOpen) {
+    card.classList.add('open');
+    btn.innerText = 'Close Card';
+    fireConfettiBurst();
   } else {
-    card.classList.remove('opened');
-    btn.innerText = 'Open the Card ✉️';
+    card.classList.remove('open');
+    btn.innerText = 'Open Your Card ✉️';
   }
 }
 
-// Self-contained Zero-Dependency Canvas Confetti
+// Lightweight Confetti Particles
 const canvas = document.getElementById('confetti-canvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
 
-function resize() {
+function fitCanvas() {
   canvas.width = canvas.parentElement.clientWidth;
   canvas.height = canvas.parentElement.clientHeight;
 }
-window.addEventListener('resize', resize);
-resize();
+window.addEventListener('resize', fitCanvas);
+fitCanvas();
 
-function burstConfetti() {
-  const colors = ['#e91e63', '#ffb703', '#00f5d4', '#7b2cbf', '#ff5400'];
-  for (let i = 0; i < 60; i++) {
+function fireConfettiBurst() {
+  const colors = ['#e63946', '#ffd166', '#06d6a0', '#118ab2', '#ff758f'];
+  for (let i = 0; i < 70; i++) {
     particles.push({
       x: canvas.width / 2,
       y: canvas.height / 2,
       r: Math.random() * 5 + 3,
       color: colors[Math.floor(Math.random() * colors.length)],
-      vx: (Math.random() - 0.5) * 8,
-      vy: (Math.random() - 0.5) * 8 - 3,
-      alpha: 1
+      vx: (Math.random() - 0.5) * 10,
+      vy: (Math.random() - 0.5) * 10 - 3,
+      life: 1
     });
   }
 }
 
-function renderParticles() {
+function updateConfetti() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach((p, index) => {
+  particles.forEach((p, idx) => {
     p.x += p.vx;
     p.y += p.vy;
-    p.vy += 0.15; // Gravity
-    p.alpha -= 0.015;
+    p.vy += 0.18; // gravity
+    p.life -= 0.015;
 
     ctx.fillStyle = p.color;
-    ctx.globalAlpha = Math.max(p.alpha, 0);
+    ctx.globalAlpha = Math.max(p.life, 0);
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
     ctx.fill();
 
-    if (p.alpha <= 0) particles.splice(index, 1);
+    if (p.life <= 0) particles.splice(idx, 1);
   });
-  requestAnimationFrame(renderParticles);
+  requestAnimationFrame(updateConfetti);
 }
-renderParticles();
+updateConfetti();
